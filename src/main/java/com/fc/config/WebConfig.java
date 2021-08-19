@@ -1,15 +1,19 @@
 package com.fc.config;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-public class MyMvcConfig implements WebMvcConfigurer {
-    /**
-     * 默认首页设置，当请求时项目地址的时候 返回login
-     */
+/**
+ * @author ddk
+ * @date 2021/8/16
+ */
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
+        registry.addViewController("/").setViewName("forward:login.html");
         WebMvcConfigurer.super.addViewControllers(registry);
     }
 
